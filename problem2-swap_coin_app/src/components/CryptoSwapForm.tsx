@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { OptionProps } from "./Select";
-import axios from "axios";
 import { toast } from "react-toastify";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SwapSection from "./SwapSection";
-
-interface CurrencyData {
-  currency: string;
-  price: number;
-}
+import SuccessModal from "./SuccessModal";
+import { fetchCryptoPrices, swapToken } from "../api/crypto.api";
 
 // Define form values type
 interface FormValues {
@@ -20,10 +16,22 @@ interface FormValues {
 const validationSchema = yup.object().shape({
   sellAmount: yup
     .string()
-    .transform((value) => (isNaN(value) ? "" : value))
     .required("Amount is required")
-    .min(0.01, "Minimum amount is 0.01")
-    .max(100000, "Maximum amount is 100,000"),
+    .test(
+      "isNumber",
+      "Amount must be a valid number",
+      (value) => !isNaN(parseFloat(value ?? "")) // Check if the string can be converted to a valid number
+    )
+    .test(
+      "minValue",
+      "Minimum amount is 0.1",
+      (value) => parseFloat(value ?? "") >= 0.01
+    )
+    .test(
+      "maxValue",
+      "Maximum amount is 100,000",
+      (value) => parseFloat(value ?? "") <= 100000
+    ),
 });
 
 const CryptoSwapForm = () => {
@@ -41,6 +49,9 @@ const CryptoSwapForm = () => {
   });
   const [buyAmount, setBuyAmount] = useState<string>("0");
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   //* Add form hook
   const methods = useForm<FormValues>({
     resolver: yupResolver(validationSchema),
@@ -56,20 +67,37 @@ const CryptoSwapForm = () => {
     handleSubmit,
     formState: { isValid, errors },
   } = methods;
-
   const sellAmount = watch("sellAmount");
 
-  const handleSwap = () => {
-    // alert(
-    //   `Swapping ${sellAmount} ${selectedSellOption.label.toUpperCase()} for ${buyAmount} ${selectedBuyOption.label.toUpperCase()}`
-    // );
-    console.log("test");
+  // simulate API call
+  const handleSwap = async () => {
+    setIsLoading(true);
+    try {
+      // Simulate API call
+      await swapToken();
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error("Error swapping", error);
+      toast.error("Swap failed. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setValue("sellAmount", "");
+    setBuyAmount("0");
   };
 
   const handleSellAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    if (/^\d*\.?\d*$/.test(value)) {
-      setValue("sellAmount", value || "", { shouldValidate: true });
+
+    // Only allow numbers and one decimal point
+    if (value === "" || /^\d*\.?\d*$/.test(value)) {
+      setValue("sellAmount", value, {
+        shouldValidate: true,
+      });
     }
   };
 
@@ -92,26 +120,9 @@ const CryptoSwapForm = () => {
 
   // Fetch prices from API
   useEffect(() => {
-    const fetchPrices = async () => {
+    const loadPrices = async () => {
       try {
-        const response = await axios.get<CurrencyData[]>(
-          "https://interview.switcheo.com/prices.json"
-        );
-        const data = response.data;
-
-        console.log(
-          "🚀TCL: - file: CryptoSwapForm.tsx:49 - data:",
-          data,
-          Object.keys(data)
-        );
-
-        // Map API data to options for the Select component
-        const mappedOptions = data.map((token) => ({
-          value: token.currency,
-          label: token.currency.toUpperCase(),
-          price: token.price,
-        }));
-
+        const mappedOptions = await fetchCryptoPrices();
         setOptions(mappedOptions);
       } catch (error) {
         console.error("Error fetching prices", error);
@@ -119,7 +130,7 @@ const CryptoSwapForm = () => {
       }
     };
 
-    fetchPrices();
+    loadPrices();
   }, []);
 
   // Calculate buyAmount
@@ -140,7 +151,7 @@ const CryptoSwapForm = () => {
   }, [sellAmount, selectedSellOption, selectedBuyOption]);
 
   return (
-    <FormProvider {...methods}>
+    <>
       <form
         onSubmit={handleSubmit(handleSwap)}
         className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full"
@@ -155,7 +166,6 @@ const CryptoSwapForm = () => {
           onOptionChange={setSelectedSellOption}
           options={options}
           defaultValue={options[0]}
-          name="sellAmount"
           error={errors.sellAmount?.message}
         />
 
@@ -172,7 +182,6 @@ const CryptoSwapForm = () => {
 
         {/* Receive Section */}
         <SwapSection
-          name="buyAmount"
           title="Receive"
           placeholder="0.01 - 100000"
           amount={buyAmount}
@@ -188,12 +197,28 @@ const CryptoSwapForm = () => {
         <button
           type="submit"
           className="w-full bg-pink-500 text-white py-3 rounded-lg shadow-lg hover:bg-pink-600 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
-          disabled={!isValid}
+          disabled={!isValid || isLoading}
         >
-          Swap
+          {isLoading ? (
+            <div className="flex items-center justify-center">
+              <span className="icon-[mdi--loading] animate-spin -ml-1 mr-3 h-5 w-5 text-white" />
+              Processing...
+            </div>
+          ) : (
+            "Swap"
+          )}
         </button>
       </form>
-    </FormProvider>
+
+      <SuccessModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        sellAmount={String(sellAmount)}
+        buyAmount={buyAmount}
+        sellCurrency={selectedSellOption.label}
+        buyCurrency={selectedBuyOption.label}
+      />
+    </>
   );
 };
 

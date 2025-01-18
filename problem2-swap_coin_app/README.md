@@ -1,45 +1,41 @@
-# Weather App 🌤️
+# Swapcoin App 💱
 
-A fully responsive, modern weather application built with **React**, **TypeScript**, **TailwindCSS**, **Framer Motion**, and **AOS.js** for smooth animations and transitions. The app uses the **OpenWeatherMap API** to fetch real-time weather data for different cities, and it includes features like search history, theme switching (dark/light mode), and a mobile-friendly design.
+A modern cryptocurrency swap interface built with **React**, **TypeScript**, **TailwindCSS**, and **React Hook Form**. The app allows users to swap between different cryptocurrencies with real-time price updates and a sleek user interface.
 
 ## Demo
 
 You can view the live version of the app here:
 
-**[Live Demo](https://dangquangvn.github.io/weather-app/)**
+**[Live Demo](https://dangquangvn.github.io/swapcoin-app/)**
 
 ## Table of Contents
 
 - [Features](#features)
-- [Project Structure](#project-structure)
+- [Project Structure](#project-structure)
 - [Technologies](#technologies)
-- [Getting Started](#getting-started)
-- [Next Steps](#next-steps)
+- [Getting Started](#getting-started)
+- [Next Steps](#next-steps)
 
 ## Features
 
-- 🌍 **Real-time Weather Data**: Fetches the current weather for any city using the OpenWeatherMap API.
-- 🔍 **Search History**: Keeps track of previous city searches with smooth animations and allows users to re-fetch data.
-- 🎨 **Theme Switcher**: Toggle between dark and light mode.
-- 📱 **Mobile-Responsive**: Fully responsive design to work seamlessly across all devices.
-- 🚀 **Smooth Animations**: Transitions and animations are handled using **Framer Motion** and **AOS.js** for a modern UI experience.
-- 💾 **Local Storage Integration**: Saves search history to `localStorage`, so the data persists even after page reloads.
-- 🌀 **Loading Spinner**: Displays a loading spinner while fetching data from the API.
-- **🔄 Debounce Input**: Prevents user spam by debouncing the search input, ensuring that API calls are only made after the user has finished typing, reducing unnecessary requests.
+- 💱 **Real-time Crypto Prices**: Fetches current cryptocurrency prices from the Switcheo API
+- 🔄 **Instant Swap**: Smooth cryptocurrency swapping interface
+- ✨ **Modern UI**: Clean and responsive design with glassmorphism effects
+- 📱 **Mobile-Responsive**: Works seamlessly across all devices
+- 🔍 **Token Search**: Quick token search with filtering capabilities
+- ⚡ **Live Conversion**: Real-time conversion rates between cryptocurrencies
+- ✅ **Form Validation**: Robust form validation with Yup and React Hook Form
+- 🌀 **Loading States**: Clear loading indicators for better UX
+- 🎯 **Error Handling**: Comprehensive error handling with toast notifications
 
 ## Project Structure
 
 Here is the folder structure for the project:
 
 ```
-├── public
-│   ├── index.html             # The main HTML file
-│   └── assets                 # Images (backgrounds, icons)
-│       ├── bg-light.png
-│       ├── bg-dark.png
 ├── src
 │   ├── api
-│   │   └── weather.api.ts      # API request to OpenWeatherMap
+│   │   └── crypto.api.ts      # API request to Switcheo
 │   ├── components
 │   │   ├── SearchBar.tsx       # Search input component
 │   │   ├── WeatherDisplay.tsx  # Displays weather data
@@ -57,71 +53,41 @@ Here is the folder structure for the project:
 
 ## Technologies
 
-- **React**: A JavaScript library for building user interfaces.
-- **TypeScript**: Adds type safety to JavaScript, helping to prevent bugs.
-- **TailwindCSS**: A utility-first CSS framework for building custom designs without writing CSS.
-- **Framer Motion**: A library for animations and transitions in React.
-- **AOS (Animate On Scroll)**: Provides animations that trigger when elements scroll into view.
-- **OpenWeatherMap API**: Provides real-time weather data.
-- **LocalStorage**: Used to store search history on the client.
+- **React**: UI library for building the interface
+- **TypeScript**: For type safety and better development experience
+- **TailwindCSS**: Utility-first CSS framework for styling
+- **React Hook Form**: For form handling and validation
+- **Yup**: Schema validation
+- **Axios**: HTTP client for API requests
+- **React Toastify**: Toast notifications
+- **Web3Icons**: Cryptocurrency icons
 
 ## Getting Started
 
-Follow the instructions below to get a copy of the project running on your local machine.
-
 ### Prerequisites
 
-Ensure you have the following tools installed on your development machine:
-
-- [Node.js](https://nodejs.org/)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- Node.js >= 18.0.0
+- npm or yarn
 
 ### Installation
 
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/yourusername/weather-app.git
+git clone https://github.com/dangquangvn/swapcoin-app.git
 ```
 
-2. Navigate into the project directory:
+2. Navigate to the project directory:
 
-```sh
-cd weather-app
-```
+### Next Steps
 
-3. Install the dependencies:
-
-```sh
-npm install
-# OR
-yarn install
-```
-
-4. Create a `.env` file in the root directory and add your OpenWeatherMap API key:
-
-```sh
-REACT_APP_OPENWEATHERMAP_API_KEY=your_api_key
-```
-
-5. Run the development server:
-
-```sh
-npm run dev
-# OR
-yarn dev
-```
-
-6. Open your browser and visit `http://localhost:3000` to see the app in action.
-
-## Next Steps
-
-Here are a few recommendations for future improvements:
-
-1. **Add Unit Tests**: Use **Jest** or **React Testing Library** to ensure the components and functions behave correctly.
-2. **Enhance Error Handling**: Currently, error handling is basic (e.g., showing a toast). Consider adding more detailed error messages or fallbacks.
-3. **Optimize API Requests**: Use caching for weather data to reduce unnecessary API requests, or use a library like `react-query` for better data fetching.
-4. **Internationalization (i18n)**: Add support for multiple languages using libraries like **react-i18next**.
-5. **Persistent Data with Database**: Store search history in a database (e.g., **MongoDB**, **PostgreSQL**) for cross-device access.
-6. **Pagination**: Implement pagination or infinite scroll for large search histories to improve performance.
-7. **Visual Representation**: Use charts (e.g., **Chart.js**) to display weather data trends and enhance large list views.
+1. Add Testing: Implement unit tests with Jest and React Testing Library
+2. Wallet Integration: Add support for connecting cryptocurrency wallets
+3. Transaction History: Add a history of past swaps
+4. Price Charts: Add price charts for tokens
+5. Multiple Languages: Add i18n support
+6. Dark Mode: Add theme switching capability
+7. Gas Fee Estimation: Add estimated gas fees for transactions
+8. Price Alerts: Add price alert functionality
+9. Slippage Control: Add slippage tolerance settings
+10. Trade Analytics: Add analytics for swap transactions

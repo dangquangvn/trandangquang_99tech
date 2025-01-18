@@ -14,7 +14,7 @@ interface SelectProps {
   value: OptionProps;
   onChange: (value: OptionProps) => void;
   placeholder?: string;
-  defaultValue?: OptionProps; // Add defaultValue prop
+  defaultValue?: OptionProps;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -25,7 +25,6 @@ const Select: React.FC<SelectProps> = ({
   defaultValue,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState<OptionProps>(value);
   const selectRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -66,7 +65,6 @@ const Select: React.FC<SelectProps> = ({
   // Initialize with defaultValue if provided
   useEffect(() => {
     if (defaultValue && !value.value) {
-      setSelectedValue(defaultValue);
       onChange(defaultValue);
     }
   }, [defaultValue]);
@@ -74,7 +72,6 @@ const Select: React.FC<SelectProps> = ({
   const dropdown = isOpen && (
     <div
       ref={dropdownRef}
-      // className="absolute z-50 mt-2 bg-gray-900 bg-opacity-80 backdrop-blur-md border border-gray-700 border-opacity-30 rounded-lg shadow-lg w-40 max-h-40 overflow-y-auto"
       className="absolute z-50 mt-2 bg-gray-900 bg-opacity-80 backdrop-blur-md border border-gray-700 border-opacity-30 rounded-lg shadow-lg w-40 max-h-64 overflow-hidden"
       style={{
         position: "absolute",
@@ -156,22 +153,11 @@ const Select: React.FC<SelectProps> = ({
               : placeholder || "Select"}
           </span>
         </div>
-        <svg
-          className={`w-4 h-4 transition-transform text-gray-300 ${
+        <span
+          className={`icon-[mdi--chevron-down] text-xl text-gray-300 transition-transform ${
             isOpen ? "rotate-180" : ""
           }`}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        />
       </div>
 
       {/* Render Dropdown in Portal */}

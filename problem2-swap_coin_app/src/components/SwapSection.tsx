@@ -1,10 +1,8 @@
 import React from "react";
 import Select, { OptionProps } from "./Select";
-import { useFormContext } from "react-hook-form";
 
 interface SwapSectionProps {
   title: string;
-  name: string;
   placeholder: string;
   amount: string;
   onAmountChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -28,7 +26,6 @@ const SwapSection: React.FC<SwapSectionProps> = ({
   subText,
   placeholder,
   defaultValue,
-  name,
   error,
 }) => {
   return (
