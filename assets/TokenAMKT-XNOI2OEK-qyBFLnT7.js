@@ -1,1 +1,0 @@
-import{r as t,j as a,B as l}from"./index-B66avEsN.js";var r=t.forwardRef(({fallback:e,...o},s)=>a.jsx(l,{fallback:e,...o,ref:s,children:a.jsx("path",{fill:"currentColor",d:"M8.206 6.267C4.778 6.267 2 8.933 2 12.222c0 2.99 2.3 5.467 5.295 5.89l5.772-9.595a6.3 6.3 0 0 0-4.861-2.25m6.438-.378-1.577 2.628 5.766 9.594H22z"})}));r.displayName="TokenAMKT";var d=r;export{d as default};

@@ -1,0 +1,1 @@
+import{r as s,j as e,B as d}from"./index-DxM8DWUJ.js";var r=s.forwardRef(({fallback:a,...o},l)=>e.jsx(d,{fallback:a,...o,ref:l,children:e.jsx("path",{fill:"currentColor",d:"M6 2H2v4h4v16h12V6h4V2h-4v4h-4V2h-4v4H6zm4 8h4v4h-4z",fillRule:"evenodd",clipRule:"evenodd"})}));r.displayName="TokenROOK";var t=r;export{t as default};
