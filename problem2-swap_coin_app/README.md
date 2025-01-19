@@ -6,7 +6,7 @@ A modern cryptocurrency swap interface built with **React**, **TypeScript**, **T
 
 You can view the live version of the app here:
 
-**[Live Demo](https://dangquangvn.github.io/swapcoin-app/)**
+**[Live Demo](https://dangquangvn.github.io/trandangquang_99tech/)**
 
 ## Table of Contents
 
@@ -35,20 +35,14 @@ Here is the folder structure for the project:
 ```
 ├── src
 │   ├── api
-│   │   └── crypto.api.ts      # API request to Switcheo
+│   │   └── crypto.api.ts           # API request to Switcheo
 │   ├── components
-│   │   ├── SearchBar.tsx       # Search input component
-│   │   ├── WeatherDisplay.tsx  # Displays weather data
-│   │   ├── SearchHistory.tsx   # Displays search history with animations
-│   │   ├── HistoryItem.tsx     # Displays history
-│   │   ├── ThemeSwitcher.tsx   # Toggle between light/dark modes
-│   │   └── LoadingSpinner.tsx  # Spinner while fetching data
-│   ├── hooks
-│   │   └── useSearch.ts        # Custom hook for managing search and history logic
-│   ├── utils
-│   │   └── localStorageUtil.ts # Utility for interacting with localStorage
-│   ├── App.tsx                 # Main App component
-│   ├── main.tsx                # React entry point
+│   │   ├── CryptoSwapForm.tsx      # Main swap form component
+│   │   ├── Select.tsx              # Custom Select with search
+│   │   ├── SuccessModal.tsx        # Swap success modal
+│   │   ├── SwapSection.tsx         # Resuable swap section
+│   ├── App.tsx                     # Main App component
+│   ├── main.tsx                    # React entry point
 ```
 
 ## Technologies
@@ -78,6 +72,28 @@ git clone https://github.com/dangquangvn/swapcoin-app.git
 ```
 
 2. Navigate to the project directory:
+
+```sh
+cd problem2-swap_coin_app
+```
+
+Install the dependencies:
+
+```sh
+npm install
+# OR
+yarn install
+```
+
+Run the development server:
+
+```sh
+npm run dev
+# OR
+yarn dev
+```
+
+Open your browser and visit http://localhost:5713 to see the app in action.
 
 ### Next Steps
 
