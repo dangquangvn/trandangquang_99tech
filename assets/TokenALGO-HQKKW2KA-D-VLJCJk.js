@@ -1,0 +1,1 @@
+import{r as t,j as r,B as l}from"./index-B66avEsN.js";var a=t.forwardRef(({fallback:e,...o},s)=>r.jsx(l,{fallback:e,...o,ref:s,children:r.jsx("path",{fill:"currentColor",d:"m5.492 22 9.134-15.808 1.1 4.092L8.964 22h3.462l4.392-7.604L18.868 22h3.102l-3.032-11.296 2.152-4.037h-3.152L16.598 2h-3.022L2.03 22z"})}));a.displayName="TokenALGO";var L=a;export{L as default};

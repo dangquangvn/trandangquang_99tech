@@ -1,1 +1,0 @@
-import{r as s,j as e,B as d}from"./index-DxM8DWUJ.js";var r=s.forwardRef(({fallback:a,...o},l)=>e.jsx(d,{fallback:a,...o,ref:l,children:e.jsx("path",{fill:"currentColor",d:"M20 4H4v16h14.587l-3.334-3.333h-7.92V7.333h9.334v7.92L20 18.587zM2 2v20h20V2zm7.333 7.333h5.334v5.334H9.333z",fillRule:"evenodd",clipRule:"evenodd"})}));r.displayName="TokenQUAD";var n=r;export{n as default};

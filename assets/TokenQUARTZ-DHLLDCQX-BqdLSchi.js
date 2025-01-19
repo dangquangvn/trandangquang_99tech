@@ -1,1 +1,0 @@
-import{r as s,j as r,B as t}from"./index-DxM8DWUJ.js";var a=s.forwardRef(({fallback:e,...l},o)=>r.jsx(t,{fallback:e,...l,ref:o,children:r.jsx("path",{fill:"currentColor",d:"m3 17.5-1-1.06 1.04-.94H9.5l-5-5V9H6l5 5.115V7.5l1-1 1 1v6.615L18 9h1.5v1.5l-5 5H21l1 1-1 1h-7.5L12 16l-1.5 1.5z"})}));a.displayName="TokenQUARTZ";var d=a;export{d as default};

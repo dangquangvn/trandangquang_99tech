@@ -1,1 +1,0 @@
-import{r as t,j as r,B as E}from"./index-DxM8DWUJ.js";var a=t.forwardRef(({fallback:e,...o},s)=>r.jsx(E,{fallback:e,...o,ref:s,children:r.jsx("path",{fill:"currentColor",d:"M2 2h20v3.571H5.571v2.143H22v3.572H2zm0 10.714h20v3.572H5.571v2.142H22V22H2z"})}));a.displayName="TokenEUROE";var n=a;export{n as default};
