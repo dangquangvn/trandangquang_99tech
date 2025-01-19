@@ -1,1 +1,0 @@
-import{r as t,j as r,B as h}from"./index-G3YhaBiF.js";var a=t.forwardRef(({fallback:e,...o},s)=>r.jsx(h,{fallback:e,...o,ref:s,children:r.jsx("path",{fill:"currentColor",d:"M20.75 22h-3.125v-5.625H6.375V22H3.25V2h3.125v5.625h11.25V2h3.125zM6.375 13.25h11.25v-2.5H6.375z"})}));a.displayName="TokenHBAR";var n=a;export{n as default};

@@ -1,0 +1,1 @@
+import{r as t,j as a,B as l}from"./index-B66avEsN.js";var r=t.forwardRef(({fallback:e,...o},s)=>a.jsx(l,{fallback:e,...o,ref:s,children:a.jsx("path",{fill:"currentColor",d:"m12.323 9.097-3.871 3.87 5.238 7.936A2.77 2.77 0 0 0 15.936 22H22a12.3 12.3 0 0 1-2.58-2.58zM2 2h5.807v11.22L2 18.773zm11.613 0h5.161l-5.161 5.161z"})}));r.displayName="TokenKAG";var d=r;export{d as default};

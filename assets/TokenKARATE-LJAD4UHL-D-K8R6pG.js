@@ -1,1 +1,0 @@
-import{r as t,j as r,B as l}from"./index-G3YhaBiF.js";var a=t.forwardRef(({fallback:e,...o},s)=>r.jsx(l,{fallback:e,...o,ref:s,children:r.jsx("path",{fill:"currentColor",d:"M2 2h13.572v4.286H6.286V22H2zm20 20H8.429v-4.286h9.285V2H22z"})}));a.displayName="TokenKARATE";var d=a;export{d as default};
